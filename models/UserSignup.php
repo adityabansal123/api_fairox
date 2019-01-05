@@ -40,6 +40,7 @@ class UserSignup extends Model{
         $user->email = $this->email;
         $user->access_token = \Yii::$app->security->generateRandomString(32);
         $user->unique_key = time().mt_rand(10,99);
+        $user->created_at = date('Y-m-d H:i:s', strtotime('now'));
         $user->setPassword($this->password);
         $user->generateAuthKey();
         return ($user->save()) ? $user : null;
