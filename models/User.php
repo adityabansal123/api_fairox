@@ -41,7 +41,17 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
 //        }
 //
 //        return null;
-        return static::findOne(['access_token'=>$token, 'status'=>self::ACTIVE_USER]);
+        if($user = static::findOne(['access_token'=>$token, 'status'=>self::ACTIVE_USER])){
+            $expires = strtotime("+5 minute", strtotime($user->token_expires));
+            if($expires > time()){
+                $user->token_expires = date('Y-m-d H:i:s', strtotime('now'));
+                $user->save();
+                return $user;
+            }else{
+                $user->access_token = '';
+                $user->save();
+            }
+        }
     }
 
     /**
