@@ -6,7 +6,9 @@ use Yii;
 use app\models\User;
 use yii\web\Controller;
 use yii\filters\auth\HttpBasicAuth;
+use yii\filters\auth\HttpBearerAuth;
 use yii\web\Response;
+
 
 class TestController extends Controller
 {
@@ -17,13 +19,15 @@ class TestController extends Controller
     {
             $behaviors = parent::behaviors();
             $behaviors['authenticator'] = [
-                'class' => HttpBasicAuth::className(),
-                'auth' => function($username, $password){
-                    $user = User::findByUsername($username);
-                    if($user && $user->validatePasswordBasic($password, $user->password)){
-                        return $user;
-                    }
-                }
+//                'class' => HttpBasicAuth::className(),
+//                'auth' => function($username, $password){
+//                    $user = User::findByUsername($username);
+//                    if($user && $user->validatePasswordBasic($password, $user->password)){
+//                        return $user;
+//                    }
+//                }
+                'class' => HttpBearerAuth::className()
+
             ];
             return $behaviors;
     }
