@@ -15,13 +15,13 @@ class UserSignup extends Model{
             ['username', 'trim'],
             ['username', 'required'],
             ['username', 'string', 'min'=>4, 'max'=>100],
-            ['username', 'unique', 'targetClass'=>'app\models\User.php', 'message'=>'username already taken'],
+            ['username', 'unique', 'targetClass'=>'app\models\User', 'message'=>'username already taken'],
 
             ['email', 'trim'],
             ['email', 'required'],
             ['email', 'email'],
             ['username', 'string', 'max'=>200],
-            ['email', 'unique', 'targetClass'=>'app\models\User.php', 'message'=>'email already taken'],
+            ['email', 'unique', 'targetClass'=>'app\models\User', 'message'=>'email already taken'],
 
             ['password', 'string', 'min'=>6],
             ['password', 'required'],
