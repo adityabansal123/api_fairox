@@ -9,7 +9,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     const ACTIVE_USER = 1;
     const INACTIVE_USER = 0;
 
-    public function tableName(){
+    public static function tableName(){
         return '{{%user}}';
     }
 
