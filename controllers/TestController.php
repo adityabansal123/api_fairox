@@ -6,7 +6,7 @@ use app\models\User;
 use yii\web\Controller;
 use yii\filters\auth\HttpBasicAuth;
 
-class SiteController extends Controller
+class TestController extends Controller
 {
     /**
      * {@inheritdoc}
