@@ -2,9 +2,11 @@
 
 namespace app\controllers;
 
+use Yii;
 use app\models\User;
 use yii\web\Controller;
 use yii\filters\auth\HttpBasicAuth;
+use yii\web\Response;
 
 class TestController extends Controller
 {
