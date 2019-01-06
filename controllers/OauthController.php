@@ -21,7 +21,7 @@ class OauthController extends Controller{
             $user->generateAuthKey();
             return ($user->save()) ? $user : 'Failed to save';
         }
-        return $model;
+        return $model->message;
     }
     public function actionLogin(){
         $model = new LoginForm();
