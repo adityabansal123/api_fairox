@@ -15,7 +15,7 @@ class OauthController extends Controller{
                 'username'=>$model->username
             ]);
             return [
-                 'id' => $model->id
+                 'id' => $user->id
                 ];
         }
     }
