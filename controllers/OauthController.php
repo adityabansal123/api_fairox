@@ -30,6 +30,8 @@ class OauthController extends Controller{
                 'token' => $user->access_token,
                 'expiry' => $user->token_expires
             ];
+        }else{
+            return $model->getErrors();
         }
     }
 }
