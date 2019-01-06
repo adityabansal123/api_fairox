@@ -17,6 +17,9 @@ class OauthController extends Controller{
             return [
                  'id' => $user->id
                 ];
+        }else{
+            print_r($model->getErrors());
+            exit();
         }
     }
     public function actionLogin(){
