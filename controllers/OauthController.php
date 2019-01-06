@@ -35,7 +35,6 @@ class OauthController extends Controller{
 
             return [
                 'token' => $user->access_token,
-                'expiry' => $user->token_expires
             ];
         }
     }
