@@ -13,7 +13,7 @@ class UserSignup extends Model{
     public function rules(){
         return [
             ['username', 'trim'],
-            ['username', 'required'],
+            ['username', 'required', 'message'=>'username required'],
             ['username', 'string', 'min'=>4, 'max'=>100],
             ['username', 'unique', 'targetClass'=>'app\models\User', 'message'=>'username already taken'],
 
