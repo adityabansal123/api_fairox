@@ -13,7 +13,7 @@ class UserSignup extends Model{
     public function rules(){
         return [
             ['username', 'trim'],
-            ['username', 'required', 'message'=>'username required'],
+            ['username', 'required'],
             ['username', 'string', 'min'=>4, 'max'=>100],
             ['username', 'unique', 'targetClass'=>'app\models\User', 'message'=>'username already taken'],
 
@@ -31,18 +31,18 @@ class UserSignup extends Model{
         ];
     }
 
-    public function signup(){
-        if(!$this->validate()){
-            return null;
-        }
-        $user = new User();
-        $user->username = $this->username;
-        $user->email = $this->email;
-        $user->access_token = \Yii::$app->security->generateRandomString(32);
-        $user->unique_key = time().mt_rand(10,99);
-        $user->created_at = date('Y-m-d H:i:s', strtotime('now'));
-        $user->setPassword($this->password);
-        $user->generateAuthKey();
-        return ($user->save()) ? $user : null;
-    }
+//    public function signup(){
+//        if(!$this->validate()){
+//            return null;
+//        }
+//        $user = new User();
+//        $user->username = $this->username;
+//        $user->email = $this->email;
+//        $user->access_token = \Yii::$app->security->generateRandomString(32);
+//        $user->unique_key = time().mt_rand(10,99);
+//        $user->created_at = date('Y-m-d H:i:s', strtotime('now'));
+//        $user->setPassword($this->password);
+//        $user->generateAuthKey();
+//        return ($user->save()) ? $user : null;
+//    }
 }
