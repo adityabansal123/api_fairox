@@ -10,7 +10,7 @@ use app\models\User;
 class OauthController extends Controller{
     public function actionSignup(){
         $model = new UserSignup();
-        if($model->load(\Yii::$app->getRequest()->getBodyParams(), '')){
+        if($model->load(\Yii::$app->getRequest()->getBodyParams(), '') && $model->signup()){
             return $model->signup();
         }else{
             return 'Not Submitted';
@@ -30,8 +30,6 @@ class OauthController extends Controller{
                 'token' => $user->access_token,
                 'expiry' => $user->token_expires
             ];
-        }else{
-            return $model->getErrors();
         }
     }
 }
