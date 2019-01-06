@@ -11,9 +11,7 @@ class OauthController extends Controller{
     public function actionSignup(){
         $model = new UserSignup();
         if($model->load(\Yii::$app->getRequest()->getBodyParams(), '') && $model->signup()){
-            return [
-                'output' => 'successful'
-            ];
+            return $model;
         }
     }
     public function actionLogin(){
