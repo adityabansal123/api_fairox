@@ -11,7 +11,12 @@ class OauthController extends Controller{
     public function actionSignup(){
         $model = new UserSignup();
         if($model->load(\Yii::$app->getRequest()->getBodyParams(), '') && $model->signup()){
-            return $model;
+            $user = User::findOne([
+                'username'=>$model->username
+            ]);
+            return [
+                 'id' => $model->id
+                ];
         }
     }
     public function actionLogin(){
