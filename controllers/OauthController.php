@@ -37,5 +37,6 @@ class OauthController extends Controller{
                 'token' => $user->access_token,
             ];
         }
+        return $model;
     }
 }
