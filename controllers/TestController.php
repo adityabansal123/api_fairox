@@ -32,8 +32,19 @@ class TestController extends Controller
             return $behaviors;
     }
 
+    public function verbs(){
+        $verbs = parent::verbs();
+        $verbs['index'] = ['POST'];
+        return $verbs;
+    }
+
     public function actionIndex(){
         return 'hello';
+//        public $modelClass = 'app\models\Locations';
+//        public $serializer = [
+//            'class' => 'yii\rest\Serializer',
+//            'collectionEnvelope' => 'items',
+//        ];
     }
 
 
