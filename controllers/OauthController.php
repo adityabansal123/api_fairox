@@ -37,7 +37,7 @@ class OauthController extends ApiBaseController{
             $user->generateAuthKey();
             return $this->response(200, $user->save());
         }
-        return $this->response(201, $model->getErrors(), false);
+        return $this->response(201, 1, false);
     }
     public function actionLogin(){
         $model = new LoginForm();
