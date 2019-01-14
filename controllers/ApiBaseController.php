@@ -6,12 +6,19 @@ use Yii;
 use yii\rest\Controller;
 
 class ApiBaseController extends Controller{
-    public function response($code, $data=''){
+    public function response($code, $data='', $hasValidationPassed = true){
         $response = [];
         $message = $this->getStatusCodeMessage($code);
-        if(!empty($message)){
+        if(!$hasValidationPassed){
             $response = [
-                'status' => true,
+                'status' => $code,
+                'message' => $message,
+                'data' => $data
+            ];
+        }else{
+            $response = [
+                'status' => $code,
+                'message' => $message,
                 'data' => $data
             ];
         }
@@ -23,7 +30,7 @@ class ApiBaseController extends Controller{
         $codes = [
             //Success 2XX
             200 => 'OK',
-            201 => 'created',
+            201 => 'Invalid',
             202 => 'Accepted',
             203 => 'Non Authoritative Information',
             204 => 'No Content',
