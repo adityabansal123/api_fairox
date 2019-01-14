@@ -20,7 +20,7 @@ class UserSignup extends Model{
             ['email', 'trim'],
             ['email', 'required'],
             ['email', 'email'],
-            ['username', 'string', 'max'=>200],
+            ['email', 'string', 'max'=>200],
             ['email', 'unique', 'targetClass'=>'app\models\User', 'message'=>'email already taken'],
 
             ['password', 'string', 'min'=>6],
