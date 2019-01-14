@@ -9,11 +9,20 @@ use app\models\User;
 
 class OauthController extends ApiBaseController{
 
-    public function verbs(){
-        $verbs = parent::verbs();
-        $verbs['signup'] = ['POST'];
-        $verbs['login'] = ['POST'];
-        return $verbs;
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+        $behaviors['verbs'] = [
+            'class' => \yii\filters\VerbFilter::className(),
+            'actions' => [
+                'signup' => ['POST']
+                'login' => ['POST']
+            ]
+        ];
+        return $behaviors;
     }
 
     public function actionSignup(){

@@ -29,13 +29,13 @@ class TestController extends Controller
                 'class' => HttpBearerAuth::className()
 
             ];
+            $behaviors['verbs'] = [
+                'class' => \yii\filters\VerbFilter::className(),
+                'actions' => [
+                    'index' => ['POST']
+                ]
+            ];
             return $behaviors;
-    }
-
-    public function verbs(){
-        $verbs = parent::verbs();
-        $verbs['index'] = ['POST'];
-        return $verbs;
     }
 
     public function actionIndex(){
