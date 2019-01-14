@@ -2,7 +2,6 @@
 
 namespace app\controllers;
 
-use app\controllers\ApiBaseController;
 use app\models\UserSignup;
 use app\models\LoginForm;
 use app\models\User;
