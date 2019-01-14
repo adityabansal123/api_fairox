@@ -35,7 +35,7 @@ class OauthController extends ApiBaseController{
             $user->created_at = date('Y-m-d H:i:s', strtotime('now'));
             $user->setPassword($model->password);
             $user->generateAuthKey();
-            return $this->response(200, 1);
+            return $this->response(200, $user->save());
         }
         return $this->response(201, $model->getErrors(), false);
     }
