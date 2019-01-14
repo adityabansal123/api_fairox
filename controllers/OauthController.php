@@ -19,10 +19,9 @@ class OauthController extends ApiBaseController{
             $user->created_at = date('Y-m-d H:i:s', strtotime('now'));
             $user->setPassword($model->password);
             $user->generateAuthKey();
-//            return ($user->save()) ? $user : 'Failed to save';
             return $this->response(200, $user->save());
         }
-        return $this->response(201, $model->getErrors(), false);
+        return $this->response(201, json_encode($model), false);
     }
     public function actionLogin(){
         $model = new LoginForm();
@@ -33,12 +32,8 @@ class OauthController extends ApiBaseController{
             $user->access_token = \Yii::$app->security->generateRandomString();
             $user->token_expires = date('Y-m-d H:i:s', time());
             $user->save();
-
-//            return [
-//                'token' => $user->access_token,
-//            ];
             return $this->response(200, $user->access_token);
         }
-        return $this->response(201, $model->getErrors(), false);
+        return $this->response(201, json_encode($model), false);
     }
 }
