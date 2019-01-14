@@ -18,7 +18,7 @@ class OauthController extends ApiBaseController{
         $behaviors['verbs'] = [
             'class' => \yii\filters\VerbFilter::className(),
             'actions' => [
-                'signup' => ['POST']
+                'signup' => ['POST'],
                 'login' => ['POST']
             ]
         ];
