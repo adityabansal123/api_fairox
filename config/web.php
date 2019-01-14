@@ -19,6 +19,7 @@ $config = [
             'parsers' => [
                 'application/json' => 'yii\web\JsonParser'
             ],
+            'enableCsrfValidation' => false
         ],
         'response' => [
             'format' => \yii\web\Response::FORMAT_JSON
