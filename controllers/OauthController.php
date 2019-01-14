@@ -2,12 +2,12 @@
 
 namespace app\controllers;
 
-use yii\rest\Controller;
+use app\controllers\ApiBaseController;
 use app\models\UserSignup;
 use app\models\LoginForm;
 use app\models\User;
 
-class OauthController extends Controller{
+class OauthController extends ApiBaseController{
     public function actionSignup(){
         $model = new UserSignup();
         if($model->load(\Yii::$app->getRequest()->getBodyParams(), '') && $model->validate()){
@@ -19,9 +19,10 @@ class OauthController extends Controller{
             $user->created_at = date('Y-m-d H:i:s', strtotime('now'));
             $user->setPassword($model->password);
             $user->generateAuthKey();
-            return ($user->save()) ? $user : 'Failed to save';
+//            return ($user->save()) ? $user : 'Failed to save';
+            return $this->response(200, $user->save());
         }
-        return $model;
+        return $this->response(201, $model);
     }
     public function actionLogin(){
         $model = new LoginForm();
@@ -33,10 +34,11 @@ class OauthController extends Controller{
             $user->token_expires = date('Y-m-d H:i:s', time());
             $user->save();
 
-            return [
-                'token' => $user->access_token,
-            ];
+//            return [
+//                'token' => $user->access_token,
+//            ];
+            return $this->response(200, $user->access_token);
         }
-        return $model;
+        return $this->response(201, $model);
     }
 }
