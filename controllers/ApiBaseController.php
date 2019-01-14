@@ -57,7 +57,7 @@ class ApiBaseController extends Controller{
             505 => 'HTTP version not supported',
             509 => 'Bandwidth limit excedded'
         ];
-        return (isset($codes[$status])) ? $codes[status] : '';
+        return (isset($codes[$status])) ? $codes[$status] : '';
     }
 
     private function setHeader($status){
