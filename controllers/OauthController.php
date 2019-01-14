@@ -22,7 +22,7 @@ class OauthController extends ApiBaseController{
 //            return ($user->save()) ? $user : 'Failed to save';
             return $this->response(200, $user->save());
         }
-        return $this->response(201, $model, false);
+        return $this->response(201, $model->getErrors(), false);
     }
     public function actionLogin(){
         $model = new LoginForm();
@@ -39,6 +39,6 @@ class OauthController extends ApiBaseController{
 //            ];
             return $this->response(200, $user->access_token);
         }
-        return $this->response(201, $model, false);
+        return $this->response(201, $model->getErrors(), false);
     }
 }
